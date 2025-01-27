@@ -2202,7 +2202,7 @@ input, select, textarea {
 
 			#banner .inner h2 {
 				/*font-size: 5.5em;*/
-				font-size: calc(0em + 8vw);
+				font-size: calc(1em + 8vw);
 				font-weight: 900;
 				letter-spacing: 0.2em;
 				margin: 0;
@@ -2821,7 +2821,7 @@ input, select, textarea {
 		/* Banner */
 
 			#banner {
-				background-size: 210%;
+				background-size: 250%;
 				padding: 14em 0;
 			}
 
