@@ -1600,6 +1600,9 @@
 		font-weight: 300;
 		line-height: 1.65;
 	}
+	p { 
+    	font-size: 13pt /* paragraph font size */
+	}
 
 		@media screen and (max-width: 1680px) {
 
@@ -2818,7 +2821,7 @@
 
 		.wrapper .inner {
 			margin: 0 auto;
-			width: 80em;
+			width: 60em;
 			position: relative;
 			z-index: 99;
 		}
