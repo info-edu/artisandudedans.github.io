@@ -36,6 +36,39 @@
             border-left: 4px solid #C66B3E;
             margin-bottom: 2em;
         }
+        
+        #formStatus {
+            padding: 1em;
+            margin-top: 1em;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+            border-left: 4px solid #3c763d;
+        }
+        
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+            border-left: 4px solid #a94442;
+        }
+
+        #thankYouMessage {
+            display: none;
+        }
+
+        /* This ensures the iframe is completely hidden */
+        iframe[name="hidden_iframe"] {
+            display: none;
+            width: 0;
+            height: 0;
+            border: 0;
+            margin: 0;
+            padding: 0;
+        }
     </style>
 </head>
 <body>
@@ -73,59 +106,69 @@
             <div class="inner">
                 <div class="flex flex-2">
                     <div class="col col2">
-                        <form action="https://formspree.io/f/mpwqbbno" method="POST" class="box">
-                            <div class="row uniform">
-                                <div class="6u 12u$(xsmall)">
-                                    <input type="text" name="name" id="name" placeholder="Votre nom" required>
-                                </div>
-                                <div class="6u$ 12u$(xsmall)">
-                                    <input type="email" name="email" id="email" placeholder="Votre email" required>
-                                </div>
-                                
-                                <!-- Break -->
-                                <div class="12u$">
-                                    <div class="select-wrapper">
-                                        <select name="category" id="category" required>
-                                            <option value="">- Type de demande -</option>
-                                            <option value="coaching">Coaching individuel</option>
-                                            <option value="corporate">Ateliers en entreprise</option>
-                                            <option value="information">Demande d'information</option>
-                                            <option value="other">Autre</option>
-                                        </select>
+                        <div id="contactFormContainer">
+                            <!-- The actual form that submits to Google Forms -->
+                            <form id="contactForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfv90cJjerNqDmi_ikvMYen89LG61GoX5TlhNIc_Rx4XKsmvg/formResponse" method="POST" target="hidden_iframe" class="box">
+                                <div class="row uniform">
+                                    <div class="6u 12u$(xsmall)">
+                                        <input type="text" name="entry.839169066" id="name" placeholder="Votre nom" required>
                                     </div>
-                                </div>
-                                
-                                <!-- Break -->
-                                <div class="12u$">
-                                    <textarea name="message" id="message" placeholder="Votre message" rows="6" required></textarea>
-                                </div>
-                                
-                                <!-- Break -->
-                                <div class="12u$">
-                                    <div class="box" style="background-color: #FAF7F2;">
-                                        <input type="checkbox" id="human" name="human" required>
-                                        <label for="human">Je suis un humain et non un robot</label>
+                                    <div class="6u$ 12u$(xsmall)">
+                                        <input type="email" name="entry.2094465393" id="email" placeholder="Votre email" required>
                                     </div>
+                                    
+                                    <!-- Break -->
+                                    <div class="12u$">
+                                        <div class="select-wrapper">
+                                            <select name="entry.1505904572" id="category" required>
+                                                <option value="">- Type de demande -</option>
+                                                <option value="Coaching individuel">Coaching individuel</option>
+                                                <option value="Ateliers en entreprise">Ateliers en entreprise</option>
+                                                <option value="Demande d'information">Demande d'information</option>
+                                                <option value="Autre">Autre</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Break -->
+                                    <div class="12u$">
+                                        <textarea name="entry.888855052" id="message" placeholder="Votre message" rows="6" required></textarea>
+                                    </div>
+                                    
+                                    <!-- Break -->
+                                    <div class="12u$">
+                                        <div class="box" style="background-color: #FAF7F2;">
+                                            <input type="checkbox" id="human" name="entry.1053797634" value="Humain" required>
+                                            <label for="human">Je suis un humain et non un robot</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Break -->
+                                    <div class="12u$">
+                                        <ul class="actions">
+                                            <li><input type="submit" value="Envoyer le message" class="special" id="submitButton"></li>
+                                            <li><input type="reset" value="Réinitialiser" class="alt"></li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div id="formStatus" class="12u$"></div>
                                 </div>
-                                
-                                <!-- Formspree hidden fields -->
-                                <input type="hidden" name="_next" value="https://your-github-username.github.io/your-repo-name/thank_you.html">
-                                <input type="hidden" name="_subject" value="Nouveau message - L'Artisan Du Dedans">
-                                
-                                <!-- Break -->
-                                <div class="12u$">
-                                    <ul class="actions">
-                                        <li><input type="submit" value="Envoyer le message" class="special"></li>
-                                        <li><input type="reset" value="Réinitialiser" class="alt"></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
+                        
+                        <!-- Thank you message (hidden initially) -->
+                        <div id="thankYouMessage" class="box" style="text-align: center;">
+                            <h2>Merci pour votre message!</h2>
+                            <p>J'ai bien reçu votre demande et je vous répondrai dans les meilleurs délais, généralement sous 24-48h.</p>
+                            <p>En attendant, n'hésitez pas à explorer les autres sections du site pour en savoir plus sur mes services.</p>
+                        </div>
+                        
+                        <!-- Hidden iframe to receive form response -->
+                        <iframe name="hidden_iframe" id="hidden_iframe"></iframe>
                     </div>
                     <div class="col col1">
                         <div class="box">
                             <h3>Autres moyens de contact</h3>
-                            <!-- Image suggestion: photo professionnelle ou illustration représentant la communication -->
                             <div class="image round fit" style="margin-bottom: 2em;">
                                 <img src="images/profil.png" alt="Contact">
                             </div>
@@ -169,5 +212,26 @@
     <script src="assets/js/skel.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    
+    <script>
+        // This is the key part: we intercept form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            // Do not prevent default - let the form submit normally to Google
+            
+            // Disable submit button to prevent multiple submissions
+            document.getElementById('submitButton').disabled = true;
+            document.getElementById('submitButton').value = 'Envoi en cours...';
+            
+            // Set a timeout to show the thank you message
+            // This gives the form time to submit in the background
+            setTimeout(function() {
+                document.getElementById('contactFormContainer').style.display = 'none';
+                document.getElementById('thankYouMessage').style.display = 'block';
+                
+                // Scroll to thank you message
+                document.getElementById('thankYouMessage').scrollIntoView({ behavior: 'smooth' });
+            }, 1000); // Wait 1 second before showing thank you message
+        });
+    </script>
 </body>
 </html>
