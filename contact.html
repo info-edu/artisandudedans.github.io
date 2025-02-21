@@ -73,7 +73,7 @@
             <div class="inner">
                 <div class="flex flex-2">
                     <div class="col col2">
-                        <form method="post" action="#" class="box">
+                        <form action="https://formspree.io/f/mpwqbbno" method="POST" class="box">
                             <div class="row uniform">
                                 <div class="6u 12u$(xsmall)">
                                     <input type="text" name="name" id="name" placeholder="Votre nom" required>
@@ -107,6 +107,10 @@
                                         <label for="human">Je suis un humain et non un robot</label>
                                     </div>
                                 </div>
+                                
+                                <!-- Formspree hidden fields -->
+                                <input type="hidden" name="_next" value="https://your-github-username.github.io/your-repo-name/thank_you.html">
+                                <input type="hidden" name="_subject" value="Nouveau message - L'Artisan Du Dedans">
                                 
                                 <!-- Break -->
                                 <div class="12u$">
